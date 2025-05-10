@@ -1,0 +1,46 @@
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+from sklearn.preprocessing import LabelEncoder
+import gradio as gr
+# Step 1: Load Dataset
+url = "https://raw.githubusercontent.com/YourGitHubUsername/your-repo/main/10_Property_stolen_and_recovered.csv"
+df = pd.read_csv(url)
+# Step 2: Clean & Prepare Data
+df.dropna(inplace=True)
+df = df[['STATE/UT', 'YEAR', 'VALUE_OF_PROPERTY_STOLEN', 'VALUE_OF_PROPERTY_RECOVERED']]
+df['RECOVERY_RATE'] = df['VALUE_OF_PROPERTY_RECOVERED'] / df['VALUE_OF_PROPERTY_STOLEN']
+df['RECOVERY_CLASS'] = df['RECOVERY_RATE'].apply(lambda x: 1 if x >= 0.5 else 0)  # 1 = High, 0 = Low
+# Encode State
+le = LabelEncoder()
+df['STATE_CODE'] = le.fit_transform(df['STATE/UT'])
+# Step 3: Define Features and Target
+X = df[['STATE_CODE', 'YEAR', 'VALUE_OF_PROPERTY_STOLEN']]
+y = df['RECOVERY_CLASS']
+# Step 4: Train/Test Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Step 5: Train Model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+# Step 6: Evaluate Model
+y_pred = model.predict(X_test)
+print("Classification Report:\n", classification_report(y_test, y_pred))
+# Step 7: Gradio Interface
+def predict_recovery_efficiency(state_code, year, stolen_value):
+    input_data = np.array([[state_code, year, stolen_value]])
+    prediction = model.predict(input_data)[0]
+    return "High Recovery" if prediction == 1 else "Low Recovery"
+interface = gr.Interface(
+    fn=predict_recovery_efficiency,
+    inputs=[
+        gr.Number(label="State Code (0–N)"),
+        gr.Number(label="Year"),
+        gr.Number(label="Value of Property Stolen (INR)"),
+    ],
+    outputs="text",
+    title="Property Recovery Efficiency Predictor",
+    description="Predict whether a state has high or low recovery efficiency based on theft statistics"
+)
+interface.launch()
