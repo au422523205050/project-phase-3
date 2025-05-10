@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Theft & Recovery Analysis Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; background-color: #f8f9fa; }
+    h1, h2 { color: #343a40; }
+    section { background-color: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    code { background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>  <h1>Final Project Report: Property Theft & Recovery Analysis</h1>  <section>
+    <h2>1. Abstract</h2>
+    <p>A brief overview of the project including the problem statement, methodology used (descriptive/diagnostic), tools, and high-level findings.</p>
+  </section>  <section>
+    <h2>2. Problem Statement</h2>
+    <p>Describe the real-world issue being addressed: regional inefficiencies in property theft recovery in India. Explain its relevance to law enforcement and public trust.</p>
+  </section>  <section>
+    <h2>3. Project Objectives</h2>
+    <ul>
+      <li>Analyze state-wise and year-wise property theft and recovery data.</li>
+      <li>Identify recovery performance patterns and disparities.</li>
+      <li>Provide actionable insights and data-backed recommendations.</li>
+    </ul>
+  </section>  <section>
+    <h2>4. Dataset Description</h2>
+    <p><strong>Name:</strong> Property Stolen and Recovered<br>
+       <strong>Source:</strong> [Specify source]<br>
+       <strong>Type:</strong> Structured dataset (CSV)<br>
+       <strong>Rows/Columns:</strong> [Add after loading]<br>
+       <strong>Key Columns:</strong> Year, State/UT, Number of Cases Reported, Number of Cases Recovered, Value Stolen, Value Recovered</p>
+  </section>  <section>
+    <h2>5. Tools & Technologies Used</h2>
+    <ul>
+      <li>Python 3.x</li>
+      <li>Google Colab / Jupyter Notebook</li>
+      <li>Libraries: pandas, numpy, matplotlib, seaborn, plotly, openpyxl, pandas-profiling</li>
+      <li>Optional: Tableau / Power BI</li>
+    </ul>
+  </section>  <section>
+    <h2>6. Data Preprocessing</h2>
+    <ul>
+      <li>Handled missing values and duplicates</li>
+      <li>Converted numeric formats and date fields</li>
+      <li>Encoded state names if needed</li>
+      <li>Derived recovery metrics (e.g., recovery rate)</li>
+    </ul>
+  </section>  <section>
+    <h2>7. Exploratory Data Analysis (EDA)</h2>
+    <ul>
+      <li>Univariate: Distribution of theft and recovery amounts by year/state</li>
+      <li>Bivariate: Theft vs Recovery correlation, heatmaps, line trends</li>
+    </ul>
+    <p><strong>Key Insights:</strong></p>
+    <ul>
+      <li>States with low recovery efficiency</li>
+      <li>Yearly improvement or decline trends</li>
+    </ul>
+  </section>  <section>
+    <h2>8. Key Findings & Insights</h2>
+    <ul>
+      <li>Certain states have &gt;70% case recovery, others &lt;30%</li>
+      <li>High-value thefts often have poor recovery rates</li>
+    </ul>
+  </section>  <section>
+    <h2>9. Recommendations</h2>
+    <ul>
+      <li>Focus resources on low-performing states</li>
+      <li>Improve tracking of high-value property theft</li>
+      <li>Use analytics for year-on-year policy adjustments</li>
+    </ul>
+  </section>  <section>
+    <h2>10. Conclusion</h2>
+    <p>Summarize the value added by the analysis. Highlight how data can drive better crime resolution and regional focus.</p>
+  </section>  <section>
+    <h2>11. References</h2>
+    <p>Mention dataset sources, tools, and libraries used.</p>
+  </section></body>
+</html>
